@@ -16,6 +16,7 @@ const TodoContainer = () => {
           {todos?.map((item, index) => (
             <TodoCard
               key={index}
+              id={item.id}
               title={item?.title}
               description={item?.description}
             ></TodoCard>
