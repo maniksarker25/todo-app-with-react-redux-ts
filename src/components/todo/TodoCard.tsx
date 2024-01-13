@@ -30,16 +30,25 @@ const TodoCard = ({
         id="complete"
         checked={isComplete}
       />
-      <p className="font-semibold">{title}</p>
-      <div>
+      <p className="font-semibold flex-1 ml-2">{title}</p>
+      <div className="flex-1">
         {isComplete ? (
           <p className="text-green-500">Done</p>
         ) : (
           <p className="text-red-500">Pending</p>
         )}
       </div>
-      <p>{description}</p>
-      <p>{priority}</p>
+      <p className="flex-[2]">{description}</p>
+      <div className="flex-1 flex items-center gap-2">
+        <div
+          className={`size-3 rounded-full 
+          ${priority === "high" ? "bg-red-500" : ""}
+          ${priority === "medium" ? "bg-yellow-500" : ""}
+          ${priority === "low" ? "bg-green-500" : ""}
+          `}
+        ></div>
+        <p>{priority}</p>
+      </div>
       <div className="space-x-4">
         <Button onClick={() => dispatch(removeTodo(id))} className="bg-red-500">
           <svg
