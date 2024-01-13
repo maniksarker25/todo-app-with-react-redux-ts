@@ -14,12 +14,7 @@ const TodoContainer = () => {
       <div className="w-full h-full bg-primary-gradient rounded-xl p-[5px] ">
         <div className="bg-white p-5 w-ful h-full rounded-lg  space-y-3">
           {todos?.map((item, index) => (
-            <TodoCard
-              key={index}
-              id={item.id}
-              title={item?.title}
-              description={item?.description}
-            ></TodoCard>
+            <TodoCard key={index} {...item}></TodoCard>
           ))}
         </div>
         {/* <div className="bg-white p-3 rounded-lg">
