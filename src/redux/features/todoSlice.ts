@@ -4,6 +4,7 @@ type TTodo = {
   id: string;
   title: string;
   description: string;
+  priority: string;
   isComplete?: boolean;
 };
 type TInitialState = {

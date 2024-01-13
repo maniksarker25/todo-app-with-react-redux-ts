@@ -5,9 +5,16 @@ type TTodoCardProps = {
   id: string;
   title: string;
   description: string;
+  priority: string;
   isComplete?: boolean;
 };
-const TodoCard = ({ id, title, description, isComplete }: TTodoCardProps) => {
+const TodoCard = ({
+  id,
+  title,
+  description,
+  isComplete,
+  priority,
+}: TTodoCardProps) => {
   const dispatch = useAppDispatch();
 
   // handle complete
@@ -32,6 +39,7 @@ const TodoCard = ({ id, title, description, isComplete }: TTodoCardProps) => {
         )}
       </div>
       <p>{description}</p>
+      <p>{priority}</p>
       <div className="space-x-4">
         <Button onClick={() => dispatch(removeTodo(id))} className="bg-red-500">
           <svg
