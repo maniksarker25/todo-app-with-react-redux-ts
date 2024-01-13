@@ -19,23 +19,33 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { addTodo } from "@/redux/features/todoSlice";
-import { useAppDispatch } from "@/redux/hook";
+// import { addTodo } from "@/redux/features/todoSlice";
+// import { useAppDispatch } from "@/redux/hook";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { FormEvent, useState } from "react";
+import { useAddTodoMutation } from "@/redux/api/api";
 const AddToModal = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("low");
   // console.log(priority);
-  const dispatch = useAppDispatch();
-
+  //! for local state management
+  // const dispatch = useAppDispatch();
+  //* for server state management
+  //? [actualFunctionForPost,{data,isLoading,isError}] = useAddTodoMutation()
+  const [addTodo, { data, isLoading, isError, isSuccess }] =
+    useAddTodoMutation();
+  console.log({ data, isLoading, isError, isSuccess });
   // handle on submit
   const handleOnSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const randomString = Math.random().toString(36).substring(2, 7);
-    const taskDetails = { id: randomString, title, description, priority };
-    dispatch(addTodo(taskDetails));
+    // const randomString = Math.random().toString(36).substring(2, 7);
+    const taskDetails = { title, description, priority, isComplete: false };
+    // console.log(taskDetails);
+    //! for local state management
+    // dispatch(addTodo(taskDetails));
+    //* for server state management
+    addTodo(taskDetails);
   };
 
   // handle priority change
