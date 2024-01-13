@@ -21,15 +21,16 @@ const TodoCard = ({ id, title, description, isComplete }: TTodoCardProps) => {
         type="checkbox"
         name="complete"
         id="complete"
+        checked={isComplete}
       />
       <p className="font-semibold">{title}</p>
-      <p>
+      <div>
         {isComplete ? (
           <p className="text-green-500">Done</p>
         ) : (
           <p className="text-red-500">Pending</p>
         )}
-      </p>
+      </div>
       <p>{description}</p>
       <div className="space-x-4">
         <Button onClick={() => dispatch(removeTodo(id))} className="bg-red-500">
